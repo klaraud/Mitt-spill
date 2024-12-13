@@ -1,2 +1,2 @@
-# Mitt-spill
-Mitt spill vurdering des/jan 24/25
+# Mitt første jS-spill
+Mer info kommer
