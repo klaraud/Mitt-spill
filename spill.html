@@ -1,17 +1,57 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
+    <h1>Fotballspill</h1>
     <div id="bane">
         <img id="ball" src="bilder/ball.png" alt="" />
+        <div id="player1" class = "player"></div>
+        <div id="player2" class = "player"></div>
     </div>
 
     <script>
-        // Her kommer JS...
+        const spiller1 = document.getElementById("player1")
+        const spiller2 = document.getElementById("player2")
+        const bane = document.getElementById("bane")
+        const ball = document.getElementById("ball")
+
+        let x = 0
+        let vx = 1
+
+        let y = 0
+        let vy = 1
+
+        let spiller1Y = spiller1.offsetTop;
+        let spiller2Y = spiller2.offsetTop;
+        const spillerSpeed = 5;
+
+
+        function flyttball() {
+            x += vx
+            y += vy
+
+            ball.style.left = x + "px"
+            ball.style.top = y + "px"
+
+            if (x > bane.offsetWidth - ball.offsetWidth || x <= 0) {
+                vx = -vx
+            }
+            if (y > bane.offsetHeight - ball.offsetHeight || y <= 0)
+            vy = -vy
+        }
+    
+        setInterval(flyttball, 1)
+
+
+
     </script>
 </body>
+
 </html>

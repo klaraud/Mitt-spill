@@ -13,13 +13,14 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-direction: column;
     background-color: aliceblue;
 }
 
 #bane {
     width: 500px;
     height: 300px;
-    background-image: url("bilder/bane.jpg");
+    background-image: url("bilder/bane.png");
     background-size: 100% 100%;
     position: relative;
 }
@@ -29,4 +30,27 @@ body {
     position: absolute;
     left: 0;
     top: 50%;
+    transform: translateY(-50%);
+    /* gjør ballen sentralisert vertikalt*/
+}
+
+/* Stilen for spillerne*/
+.player {
+    width: 50px;
+    height: 50px;
+    position: absolute;
+}
+
+/* Spesifikke plasseringer for spiller 1 og spiller to til venstre og høyre i banen*/
+
+#player1{
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%); /* Gjør at spilleren er vertikal ikke horisontal*/
+}
+
+#player2{
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%); /* Gjør at spilleren er vertikal ikke horisontal*/
 }
