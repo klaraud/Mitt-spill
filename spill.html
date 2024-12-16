@@ -12,41 +12,62 @@
     <h1>Fotballspill</h1>
     <div id="bane">
         <img id="ball" src="bilder/ball.png" alt="" />
-        <div id="player1" class = "player"></div>
-        <div id="player2" class = "player"></div>
+        <div id="player1" class="player"></div>
+        <div id="player2" class="player"></div>
     </div>
 
     <script>
+        // Henter html elementer for alt man trenger i koden
         const spiller1 = document.getElementById("player1")
         const spiller2 = document.getElementById("player2")
         const bane = document.getElementById("bane")
         const ball = document.getElementById("ball")
 
-        let x = 0
-        let vx = 1
+        let x = ball.offsetLeft;
+        let vx = 1 // Hastigheten til ballen i x-retning
 
-        let y = 0
-        let vy = 1
+        let y = ball.offsetTop;
+        let vy = 1 // Hastigheten til ballen i y-retning
 
+        // Viser spillernes posisjoner
         let spiller1Y = spiller1.offsetTop;
         let spiller2Y = spiller2.offsetTop;
-        const spillerSpeed = 5;
+        const spillerSpeed = 5; // Hastigheten som spillerne har
 
-
+        //Funksjon for å flytte ballen
         function flyttball() {
+            // oppdaterer ballens posisjon
             x += vx
             y += vy
 
+            //Oppdaterer ballens retning for å reflektere den nye posisjonen
             ball.style.left = x + "px"
             ball.style.top = y + "px"
 
+            //If- retningene får ballen til å endre retning dersom den treffer sidene, toppen eller bunnen av banen
             if (x > bane.offsetWidth - ball.offsetWidth || x <= 0) {
                 vx = -vx
             }
             if (y > bane.offsetHeight - ball.offsetHeight || y <= 0)
-            vy = -vy
+                vy = -vy
+
+            //Kollesjon med spikller 1
+            if (x <= spiller1.offsetLeft + spiller1.offsetLeft &&
+                y >= spiller1.offsetTop &&
+                y <= spiller1.offsetTop + spiller1.offsetHeight) {
+                vx = -vx
+            }
+
+            // Kollisjon med spiller 2
+            if (x + ball.offsetWidth >= spiller2.offsetLeft &&
+                y >= spiller2.offsetTop &&
+                y <= spiller2.offsetTop + spiller2.offsetHeight) {
+                vx = -vx; // Endrer ballens retning ved kollisjon
+            }
+
+
         }
-    
+
         setInterval(flyttball, 1)
 
 
