@@ -62,9 +62,9 @@
             }
 
             // Kollisjon med spiller 2
-            if (x + ball.offsetWidth >= spiller2.offsetWidth &&
+            if (x + ball.offsetWidth >= spiller2.offsetLeft &&
                 x <= spiller2.offsetLeft + spiller2.offsetWidth &&
-                y + ball.offsetHeight>= spiller2.offsetTop &&
+                y + ball.offsetHeight >= spiller2.offsetTop &&
                 y <= spiller2.offsetTop + spiller2.offsetHeight) {
                 vx = -vx; // Endrer ballens retning ved kollisjon
                 x = spiller2.offsetLeft - ball.offsetWidth; // Hindrer at ballen "klistrer seg" til spilleren
