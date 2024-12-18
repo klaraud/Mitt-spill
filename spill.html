@@ -45,10 +45,10 @@
             ball.style.top = y + "px"
 
             //If- retningene får ballen til å endre retning dersom den treffer sidene, toppen eller bunnen av banen
-            if (x > bane.offsetWidth - ball.offsetWidth || x <= 0) {
+            if (x > bane.offsetWidth - ball.offsetWidth || x < 0) {
                 vx = -vx
             }
-            if (y > bane.offsetHeight - ball.offsetHeight || y <= 0)
+            if (y > bane.offsetHeight - ball.offsetHeight || y < 0)
                 vy = -vy
 
             //Kollesjon med spikller 1
