@@ -53,6 +53,7 @@
 
             //Kollesjon med spikller 1
             if (x <= spiller1.offsetLeft + spiller1.offsetWidth &&
+                x + ball.offsetWidth >= spiller1.offsetLeft && 
                 y + ball.offsetHeight >= spiller1.offsetTop &&
                 y <= spiller1.offsetTop + spiller1.offsetHeight) {
                 vx = -vx // Endrer ballens retning etter kollisjon
@@ -62,6 +63,7 @@
 
             // Kollisjon med spiller 2
             if (x + ball.offsetWidth >= spiller2.offsetWidth &&
+                x <= spiller2.offsetLeft + spiller2.offsetWidth &&
                 y + ball.offsetHeight>= spiller2.offsetTop &&
                 y <= spiller2.offsetTop + spiller2.offsetHeight) {
                 vx = -vx; // Endrer ballens retning ved kollisjon
