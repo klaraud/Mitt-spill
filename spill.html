@@ -65,6 +65,21 @@
                 vx = -vx; // Endrer ballens retning ved kollisjon
             }
 
+            function movePlayer(event){ // bevege spillere utifra tastetrykk
+                switch (event.key){ //bevegelse for spiller 1
+                    case "w": // når man trykker på y 
+                        // beveger spiller 1 oppover og sørger for at den ikke går utenfor banen
+                        spiller1Y = Math.max(spiller1Y+spillerSpeed, bane.offsetHeight- spiller1.offsetHeight)
+                        spiller1.style.top = spiller1Y + "px";
+                        break;
+                    case "s": // når man trykker på s
+                        //beveger nedover og sørger for at den ikke går uytenfor banen
+                        spiller1Y = Math.min(spiller1Y + spillerSpeed, bane.offsetHeight - spiller1.offsetHeight);
+                        spiller1.style.top = spiller1Y + "px";
+                        break;
+                }
+            }
+
 
         }
 
