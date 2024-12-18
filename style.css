@@ -47,13 +47,11 @@ body {
 #player1{
     left: 10px;
     top: 50%;
-    background-color: brown;
     transform: translateY(-50%); /* Gjør at spilleren er vertikal ikke horisontal*/
 }
 
 #player2{
     right: 10px;
     top: 50%;
-    background-color: brown;
     transform: translateY(-50%); /* Gjør at spilleren er vertikal ikke horisontal*/
 }
