@@ -64,26 +64,42 @@
                 y <= spiller2.offsetTop + spiller2.offsetHeight) {
                 vx = -vx; // Endrer ballens retning ved kollisjon
             }
+        }
 
-            function movePlayer(event){ // bevege spillere utifra tastetrykk
-                switch (event.key){ //bevegelse for spiller 1
-                    case "w": // når man trykker på y 
+            function movePlayer(event) { // bevege spillere utifra tastetrykk
+                switch (event.key) { //bevegelse for spiller 1
+                    case "w": // når man trykker på w 
                         // beveger spiller 1 oppover og sørger for at den ikke går utenfor banen
-                        spiller1Y = Math.max(spiller1Y+spillerSpeed, bane.offsetHeight- spiller1.offsetHeight)
+                        spiller1Y = Math.min(spiller1Y-spillerSpeed);
                         spiller1.style.top = spiller1Y + "px";
                         break;
                     case "s": // når man trykker på s
                         //beveger nedover og sørger for at den ikke går uytenfor banen
-                        spiller1Y = Math.min(spiller1Y + spillerSpeed, bane.offsetHeight - spiller1.offsetHeight);
+                        spiller1Y = Math.max(spiller1Y + spillerSpeed, bane.offsetHeight - spiller1.offsetHeight)
                         spiller1.style.top = spiller1Y + "px";
+                        break;
+                    // bevegelse for spiller 2
+                    case 'ArrowUp':
+                        // Beveger spiller 2 oppover og sørger for at den ikke går utenfor banen
+                        spiller2Y = Math.max(spiller2Y - spillerSpeed, 0);
+                        spiller2.style.top = spiller2Y + "px";
+                        break;
+                    case 'ArrowDown':
+                        // Beveger spiller nedover og sørger for at den ikke går utenfor banen
+                        spiller2Y = Math.min(spiller2Y + spillerSpeed, bane.offsetHeight - spiller2.offsetHeight);
+                        spiller2.style.top = spiller2Y + "px";
                         break;
                 }
             }
 
 
-        }
+        
 
+        // starter interval for å oppdatere ballens posisjon
         setInterval(flyttball, 1)
+
+        // legger til lyd ved tast
+        window.addEventListener("keydown", movePlayer);
 
 
 
