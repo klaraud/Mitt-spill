@@ -56,6 +56,8 @@
                 y + ball.offsetHeight >= spiller1.offsetTop &&
                 y <= spiller1.offsetTop + spiller1.offsetHeight) {
                 vx = -vx // Endrer ballens retning etter kollisjon
+                x = spiller1.offsetLeft + spiller1.offsetWidth; // Hindrer at ballen "klistrer seg" til spilleren
+
             }
 
             // Kollisjon med spiller 2
@@ -63,6 +65,8 @@
                 y + ball.offsetHeight>= spiller2.offsetTop &&
                 y <= spiller2.offsetTop + spiller2.offsetHeight) {
                 vx = -vx; // Endrer ballens retning ved kollisjon
+                x = spiller2.offsetLeft - ball.offsetWidth; // Hindrer at ballen "klistrer seg" til spilleren
+
             }
         }
 
