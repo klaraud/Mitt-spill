@@ -24,10 +24,10 @@
         const ball = document.getElementById("ball")
 
         let x = ball.offsetLeft;
-        let vx = 1 // Hastigheten til ballen i x-retning
+        let vx = 2 // Hastigheten til ballen i x-retning
 
         let y = ball.offsetTop;
-        let vy = 1 // Hastigheten til ballen i y-retning
+        let vy = 2 // Hastigheten til ballen i y-retning
 
         // Viser spillernes posisjoner
         let spiller1Y = spiller1.offsetTop;
@@ -52,15 +52,15 @@
                 vy = -vy
 
             //Kollesjon med spikller 1
-            if (x <= spiller1.offsetLeft + spiller1.offsetLeft &&
-                y >= spiller1.offsetTop &&
+            if (x <= spiller1.offsetLeft + spiller1.offsetWidth &&
+                y + ball.offsetHeight >= spiller1.offsetTop &&
                 y <= spiller1.offsetTop + spiller1.offsetHeight) {
                 vx = -vx // Endrer ballens retning etter kollisjon
             }
 
             // Kollisjon med spiller 2
-            if (x + ball.offsetWidth >= spiller2.offsetLeft &&
-                y >= spiller2.offsetTop &&
+            if (x + ball.offsetWidth >= spiller2.offsetWidth &&
+                y + ball.offsetHeight>= spiller2.offsetTop &&
                 y <= spiller2.offsetTop + spiller2.offsetHeight) {
                 vx = -vx; // Endrer ballens retning ved kollisjon
             }
@@ -70,12 +70,12 @@
                 switch (event.key) { //bevegelse for spiller 1
                     case "w": // når man trykker på w 
                         // beveger spiller 1 oppover og sørger for at den ikke går utenfor banen
-                        spiller1Y = Math.min(spiller1Y-spillerSpeed);
+                        spiller1Y = Math.max(spiller1Y-spillerSpeed, 0);
                         spiller1.style.top = spiller1Y + "px";
                         break;
                     case "s": // når man trykker på s
                         //beveger nedover og sørger for at den ikke går uytenfor banen
-                        spiller1Y = Math.max(spiller1Y + spillerSpeed, bane.offsetHeight - spiller1.offsetHeight)
+                        spiller1Y = Math.min(spiller1Y + spillerSpeed, bane.offsetHeight - spiller1.offsetHeight)
                         spiller1.style.top = spiller1Y + "px";
                         break;
                     // bevegelse for spiller 2
@@ -96,7 +96,7 @@
         
 
         // starter interval for å oppdatere ballens posisjon
-        setInterval(flyttball, 1)
+        setInterval(flyttball, 10)
 
         // legger til lyd ved tast
         window.addEventListener("keydown", movePlayer);
