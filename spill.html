@@ -31,10 +31,10 @@
         const spiller2PoengDisplay = document.getElementById("spiller2Poeng");
 
         let x = ball.offsetLeft;
-        let vx = 1 // Hastigheten til ballen i x-retning
+        let vx = 0.5 // Hastigheten til ballen i x-retning
 
         let y = ball.offsetTop;
-        let vy = 1 // Hastigheten til ballen i y-retning
+        let vy = 0.5 // Hastigheten til ballen i y-retning
 
         let spiller1Poeng = 0
         let spiller2Poeng = 0
@@ -42,7 +42,7 @@
         // Viser spillernes posisjoner
         let spiller1Y = spiller1.offsetTop;
         let spiller2Y = spiller2.offsetTop;
-        const spillerSpeed = 10; // Hastigheten som spillerne har
+        const spillerSpeed = 30; // Hastigheten som spillerne har
 
         function nullstillBall() {
             x = bane.offsetWidth / 2 - ball.offsetWidth / 2;
@@ -97,6 +97,7 @@
                 y <= spiller1.offsetTop + spiller1.offsetHeight) {
                 vx = -vx // Endrer ballens retning etter kollisjon
                 x = spiller1.offsetLeft + spiller1.offsetWidth; // Hindrer at ballen "klistrer seg" til spilleren
+                vx+0.2
 
             }
 
@@ -107,7 +108,7 @@
                 y <= spiller2.offsetTop + spiller2.offsetHeight) {
                 vx = -vx; // Endrer ballens retning ved kollisjon
                 x = spiller2.offsetLeft - ball.offsetWidth; // Hindrer at ballen "klistrer seg" til spilleren
-
+                vx+ 0.2
             }
         }
 
