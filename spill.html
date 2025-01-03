@@ -40,11 +40,17 @@
         const spillerSpeed = 10; // Hastigheten som spillerne har
 
         function nullstillBall() {
-        x = bane.offsetWidth / 2 - ball.offsetWidth / 2;
-        y = bane.offsetHeight / 2 - ball.offsetHeight / 2;
-        vx = 2 * (Math.random() < 0.5 ? 1 : -1); // Tilfeldig retning
-        vy = 2 * (Math.random() < 0.5 ? 1 : -1); // Tilfeldig retning
-}
+            x = bane.offsetWidth / 2 - ball.offsetWidth / 2;
+            y = bane.offsetHeight / 2 - ball.offsetHeight / 2;
+            vx = 2 * (Math.random() < 0.5 ? 1 : -1); // Tilfeldig retning
+            vy = 2 * (Math.random() < 0.5 ? 1 : -1); // Tilfeldig retning
+        }
+
+        // Funksjon for å oppdatere poengvisningen
+        function oppdaterPoeng() {
+            spiller1PoengDisplay.textContent = spiller1Poeng; // text.Content oppdaterer poengene
+            spiller2PoengDisplay.textContent = spiller2Poeng;
+        }
 
         //Funksjon for å flytte ballen
         function flyttball() {
