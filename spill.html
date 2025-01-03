@@ -10,8 +10,10 @@
 
 <body>
     <h1>Fotballspill</h1>
+
     <div id="poeng">
-    <span id="spiller1Poeng">0</span> - <span id="spiller2Poeng">0</span>
+        <span id="spiller1Poeng">0</span> - <span id="spiller2Poeng">0</span>
+    </div>
     
     <div id="bane">
         <img id="ball" src="bilder/ball.png" alt="" />
@@ -33,6 +35,9 @@
 
         let y = ball.offsetTop;
         let vy = 1 // Hastigheten til ballen i y-retning
+
+        let spiller1Poeng = 0
+        let spiller2Poeng = 0
 
         // Viser spillernes posisjoner
         let spiller1Y = spiller1.offsetTop;
@@ -130,7 +135,7 @@
                 }
             }
 
-            if (ball )
+           
 
 
         
@@ -140,6 +145,8 @@
 
         // legger til lyd ved tast
         window.addEventListener("keydown", movePlayer);
+        // Nullstiller ball ved oppstart
+        nullstillball()
 
 
 
