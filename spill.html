@@ -68,9 +68,17 @@
             ball.style.left = x + "px"
             ball.style.top = y + "px"
 
-            //If- retningene får ballen til å endre retning dersom den treffer sidene, toppen eller bunnen av banen
+            //If- retningene får spillet til å restarte og oppdatere seg dersom ballen går ut bak spillerene
             if (x > bane.offsetWidth - ball.offsetWidth || x < 0) {
-                vx = -vx
+                //Spiller 1 får poeng når ballen går ut bak spiller 2
+                spiller1Poeng ++
+                oppdaterPoeng();
+                nyRunde();
+            } else if (x < 0){
+                //Spiller 2 får poeng når ballen går ut bak spiller 1
+                spiller2Poeng ++
+                oppdaterPoeng();
+                nyRunde();
             }
             if (y > bane.offsetHeight - ball.offsetHeight || y < 0)
                 vy = -vy
