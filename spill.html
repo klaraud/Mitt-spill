@@ -74,16 +74,18 @@
             ball.style.top = y + "px"
 
             //If- retningene får spillet til å restarte og oppdatere seg dersom ballen går ut bak spillerene
-            if (x > bane.offsetWidth - ball.offsetWidth || x < 0) {
+            if (x > bane.offsetWidth - ball.offsetWidth) {
                 //Spiller 1 får poeng når ballen går ut bak spiller 2
                 spiller1Poeng ++
                 oppdaterPoeng();
                 nyRunde();
-            } else if (x < 0){
+                return
+            }  if (x < 0){
                 //Spiller 2 får poeng når ballen går ut bak spiller 1
                 spiller2Poeng ++
                 oppdaterPoeng();
                 nyRunde();
+                return
             }
             if (y > bane.offsetHeight - ball.offsetHeight || y < 0)
                 vy = -vy
@@ -146,7 +148,7 @@
         // legger til lyd ved tast
         window.addEventListener("keydown", movePlayer);
         // Nullstiller ball ved oppstart
-        nullstillball()
+        nullstillBall()
 
 
 
