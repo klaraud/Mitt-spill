@@ -14,13 +14,18 @@ body {
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    background-color: aliceblue;
+    background-color: rgb(182, 219, 178);
 }
 
 #poeng {
     font-size: 24px;
     margin-bottom: 20px;
     text-align: center;
+    color: darkslateblue;
+    border: 2px solid darkslateblue;
+    padding: 20px;
+    margin: 10px;
+    back
 }
 
 
@@ -61,4 +66,8 @@ body {
     right: 10px;
     top: 50%;
     transform: translateY(-50%); /* Gjør at spilleren er vertikal ikke horisontal*/
+}
+
+h1{
+    color: darkslateblue;
 }
