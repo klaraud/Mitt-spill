@@ -15,7 +15,7 @@
         <h5>Stilling</h5>
         <span id="spiller1Poeng">0</span> - <span id="spiller2Poeng">0</span>
     </div>
-    
+
     <div id="bane">
         <img id="ball" src="bilder/ball.png" alt="" />
         <div id="player1" class="player"> <img src="bilder/messi.ny.png" alt=""> </div>
@@ -32,10 +32,10 @@
         const spiller2PoengDisplay = document.getElementById("spiller2Poeng");
 
         let x = ball.offsetLeft;
-        let vx = 0.5 // Hastigheten til ballen i x-retning
+        let vx = 1 // Hastigheten til ballen i x-retning
 
         let y = ball.offsetTop;
-        let vy = 0.5 // Hastigheten til ballen i y-retning
+        let vy = 1 // Hastigheten til ballen i y-retning
 
         let spiller1Poeng = 0
         let spiller2Poeng = 0
@@ -77,13 +77,13 @@
             //If- retningene får spillet til å restarte og oppdatere seg dersom ballen går ut bak spillerene
             if (x > bane.offsetWidth - ball.offsetWidth) {
                 //Spiller 1 får poeng når ballen går ut bak spiller 2
-                spiller1Poeng ++
+                spiller1Poeng++
                 oppdaterPoeng();
                 nyRunde();
                 return
-            }  if (x < 0){
+            } if (x < 0) {
                 //Spiller 2 får poeng når ballen går ut bak spiller 1
-                spiller2Poeng ++
+                spiller2Poeng++
                 oppdaterPoeng();
                 nyRunde();
                 return
@@ -93,12 +93,13 @@
 
             //Kollesjon med spikller 1
             if (x <= spiller1.offsetLeft + spiller1.offsetWidth &&
-                x + ball.offsetWidth >= spiller1.offsetLeft && 
+                x + ball.offsetWidth >= spiller1.offsetLeft &&
                 y + ball.offsetHeight >= spiller1.offsetTop &&
                 y <= spiller1.offsetTop + spiller1.offsetHeight) {
                 vx = -vx // Endrer ballens retning etter kollisjon
                 x = spiller1.offsetLeft + spiller1.offsetWidth; // Hindrer at ballen "klistrer seg" til spilleren
-                vx+0.2
+                vx+= 0.3;
+
 
             }
 
@@ -107,42 +108,42 @@
                 x <= spiller2.offsetLeft + spiller2.offsetWidth &&
                 y + ball.offsetHeight >= spiller2.offsetTop &&
                 y <= spiller2.offsetTop + spiller2.offsetHeight) {
+                vx+=0.3;
                 vx = -vx; // Endrer ballens retning ved kollisjon
                 x = spiller2.offsetLeft - ball.offsetWidth; // Hindrer at ballen "klistrer seg" til spilleren
-                vx+ 0.2
             }
         }
 
-            function movePlayer(event) { // bevege spillere utifra tastetrykk
-                switch (event.key) { //bevegelse for spiller 1
-                    case "w": // når man trykker på w 
-                        // beveger spiller 1 oppover og sørger for at den ikke går utenfor banen
-                        spiller1Y = Math.max(spiller1Y-spillerSpeed, 0);
-                        spiller1.style.top = spiller1Y + "px";
-                        break;
-                    case "s": // når man trykker på s
-                        //beveger nedover og sørger for at den ikke går uytenfor banen
-                        spiller1Y = Math.min(spiller1Y + spillerSpeed, bane.offsetHeight - spiller1.offsetHeight)
-                        spiller1.style.top = spiller1Y + "px";
-                        break;
-                    // bevegelse for spiller 2
-                    case 'ArrowUp':
-                        // Beveger spiller 2 oppover og sørger for at den ikke går utenfor banen
-                        spiller2Y = Math.max(spiller2Y - spillerSpeed, 0);
-                        spiller2.style.top = spiller2Y + "px";
-                        break;
-                    case 'ArrowDown':
-                        // Beveger spiller nedover og sørger for at den ikke går utenfor banen
-                        spiller2Y = Math.min(spiller2Y + spillerSpeed, bane.offsetHeight - spiller2.offsetHeight);
-                        spiller2.style.top = spiller2Y + "px";
-                        break;
-                }
+        function movePlayer(event) { // bevege spillere utifra tastetrykk
+            switch (event.key) { //bevegelse for spiller 1
+                case "w": // når man trykker på w 
+                    // beveger spiller 1 oppover og sørger for at den ikke går utenfor banen
+                    spiller1Y = Math.max(spiller1Y - spillerSpeed, 0);
+                    spiller1.style.top = spiller1Y + "px";
+                    break;
+                case "s": // når man trykker på s
+                    //beveger nedover og sørger for at den ikke går uytenfor banen
+                    spiller1Y = Math.min(spiller1Y + spillerSpeed, bane.offsetHeight - spiller1.offsetHeight)
+                    spiller1.style.top = spiller1Y + "px";
+                    break;
+                // bevegelse for spiller 2
+                case 'ArrowUp':
+                    // Beveger spiller 2 oppover og sørger for at den ikke går utenfor banen
+                    spiller2Y = Math.max(spiller2Y - spillerSpeed, 0);
+                    spiller2.style.top = spiller2Y + "px";
+                    break;
+                case 'ArrowDown':
+                    // Beveger spiller nedover og sørger for at den ikke går utenfor banen
+                    spiller2Y = Math.min(spiller2Y + spillerSpeed, bane.offsetHeight - spiller2.offsetHeight);
+                    spiller2.style.top = spiller2Y + "px";
+                    break;
             }
+        }
 
-           
 
 
-        
+
+
 
         // starter interval for å oppdatere ballens posisjon
         setInterval(flyttball, 10)
