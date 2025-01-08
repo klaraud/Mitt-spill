@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Jersey+10&display=swap');
+
 * {
     margin: 0;
     padding: 0;
@@ -8,6 +10,7 @@ img {
     width: 100%;
 }
 
+
 body {
     height: 100vh;
     display: flex;
@@ -15,6 +18,9 @@ body {
     justify-content: center;
     flex-direction: column;
     background-color: rgb(182, 219, 178);
+    font-family: "Jersey 10", serif;
+    font-weight: 400;
+    font-style: normal;
 }
 
 #poeng {
@@ -25,7 +31,7 @@ body {
     border: 2px solid darkslateblue;
     padding: 20px;
     margin: 10px;
-    back
+
 }
 
 
@@ -43,7 +49,7 @@ body {
     left: 0;
     top: 50%;
     /*transform: translateY(-50%);
-     gjør ballen sentralisert vertikalt*/
+    gjør ballen sentralisert vertikalt*/
 }
 
 /* Stilen for spillerne*/
@@ -51,23 +57,25 @@ body {
     width: 50px;
     height: 50px;
     position: absolute;
-    
+
 }
 
 /* Spesifikke plasseringer for spiller 1 og spiller to til venstre og høyre i banen*/
 
-#player1{
+#player1 {
     left: 10px;
     top: 50%;
-    transform: translateY(-50%); /* Gjør at spilleren er vertikal ikke horisontal*/
+    transform: translateY(-50%);
+    /* Gjør at spilleren er vertikal ikke horisontal*/
 }
 
-#player2{
+#player2 {
     right: 10px;
     top: 50%;
-    transform: translateY(-50%); /* Gjør at spilleren er vertikal ikke horisontal*/
+    transform: translateY(-50%);
+    /* Gjør at spilleren er vertikal ikke horisontal*/
 }
 
-h1{
+h1 {
     color: darkslateblue;
 }

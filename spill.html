@@ -48,8 +48,8 @@
         function nullstillBall() {
             x = bane.offsetWidth / 2 - ball.offsetWidth / 2;
             y = bane.offsetHeight / 2 - ball.offsetHeight / 2;
-            vx = 2 * (Math.random() < 0.5 ? 1 : -1); // Tilfeldig retning
-            vy = 2 * (Math.random() < 0.5 ? 1 : -1); // Tilfeldig retning
+            vx = Math.random() < 0.5 ? 2 : -2; // Tilfeldig retning
+            vy = Math.random() < 0.5 ? 2 : -2; // Tilfeldig retning
         }
 
         // Funksjon for å oppdatere poengvisningen
@@ -108,13 +108,13 @@
                 x <= spiller2.offsetLeft + spiller2.offsetWidth &&
                 y + ball.offsetHeight >= spiller2.offsetTop &&
                 y <= spiller2.offsetTop + spiller2.offsetHeight) {
-                vx+=0.3;
+                vx+=0.3; // Hvor mye den øker
                 vx = -vx; // Endrer ballens retning ved kollisjon
                 x = spiller2.offsetLeft - ball.offsetWidth; // Hindrer at ballen "klistrer seg" til spilleren
             }
         }
 
-        function movePlayer(event) { // bevege spillere utifra tastetrykk
+        function movePlayer(event) { // bevege spillere utifra tastetrykk 
             switch (event.key) { //bevegelse for spiller 1
                 case "w": // når man trykker på w 
                     // beveger spiller 1 oppover og sørger for at den ikke går utenfor banen
@@ -148,7 +148,6 @@
         // starter interval for å oppdatere ballens posisjon
         setInterval(flyttball, 10)
 
-        // legger til lyd ved tast
         window.addEventListener("keydown", movePlayer);
         // Nullstiller ball ved oppstart
         nullstillBall()
