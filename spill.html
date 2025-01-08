@@ -12,7 +12,7 @@
     <h1>Fotballspill</h1>
 
     <div id="poeng">
-        <h5>Stilling</h5>
+        <h5 id="stilling">Stilling</h5>
         <span id="spiller1Poeng">0</span> - <span id="spiller2Poeng">0</span>
     </div>
 
@@ -30,6 +30,7 @@
         const ball = document.getElementById("ball")
         const spiller1PoengDisplay = document.getElementById("spiller1Poeng");
         const spiller2PoengDisplay = document.getElementById("spiller2Poeng");
+        const stilling = document.getElementById("stilling")
 
         let x = ball.offsetLeft;
         let vx = 1 // Hastigheten til ballen i x-retning
@@ -56,6 +57,22 @@
         function oppdaterPoeng() {
             spiller1PoengDisplay.textContent = spiller1Poeng; // text.Content oppdaterer poengene
             spiller2PoengDisplay.textContent = spiller2Poeng;
+            if (spiller1Poeng >= 5){
+                spillSlutt("Messi")
+                return
+
+
+            } if (spiller2Poeng >= 5) {
+                spillSlutt("Haaland")
+                return
+
+            }
+
+            function spillSlutt(vinner) {
+                stilling.innerHTML = `${vinner} vant!` // Dollartegnet gjør at vinneren endrer seg utifra hvem av messi og haaland som vinner, gjør koden mer ryddig
+                ball.style.display = "none"
+                clearInterval(interval)
+            }
         }
 
         // Funksjon for å starte en ny runde
@@ -140,13 +157,16 @@
             }
         }
 
+        
+
+
 
 
 
 
 
         // starter interval for å oppdatere ballens posisjon
-        setInterval(flyttball, 10)
+        const interval = setInterval(flyttball, 10)
 
         window.addEventListener("keydown", movePlayer);
         // Nullstiller ball ved oppstart
